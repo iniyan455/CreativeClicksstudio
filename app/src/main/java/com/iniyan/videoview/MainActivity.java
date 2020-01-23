@@ -31,7 +31,8 @@ import static com.iniyan.videoview.common.VideoPlayerConfig.isNetworkConnected;
  * So I Decided to Make all in one together in Single  Pojo
  * I implemented Here with Databinding with MVVM Design Pattern Using LiveData
  * Please Let me  know any Modifications
- * I'm not consumed any api if you want to consume api to load means glad to implement
+ * I'm not consumed any api if you want
+ * to consume api to load means glad to implement
  */
 public class MainActivity extends AppCompatActivity {
     private MainViewModel mainViewModel;
@@ -63,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(View view, int position) {
 
-
+                        //videoDataAdapter.getList().get(position).getUrl()
                         boolean isURL =
-                                Patterns.WEB_URL.matcher(videoDataAdapter.getList().get(position).getUrl().trim()).matches();
+                                Patterns.WEB_URL.matcher(getAllAPICalls(position).trim()).matches();
                         if (isURL) {
-                            Intent mIntent = ExoPlayerActivity.getStartIntent(MainActivity.this, videoDataAdapter.getList().get(position).getUrl().trim());
+                            Intent mIntent = ExoPlayerActivity.getStartIntent(MainActivity.this, getAllAPICalls(position).trim());
                             startActivity(mIntent);
                         } else {
                             Toast.makeText(MainActivity.this,
@@ -88,6 +89,13 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.getAllVideos().observe(this, videolist -> videoDataAdapter.setVideoList(videolist));
 
     }
+
+
+    private String getAllAPICalls(int position) {
+         return   mainViewModel.getAllAPICalls(position).getValue();
+
+    }
+
 
 
 }

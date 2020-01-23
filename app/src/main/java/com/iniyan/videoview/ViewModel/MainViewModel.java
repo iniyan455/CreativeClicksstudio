@@ -22,5 +22,9 @@ public class MainViewModel extends AndroidViewModel {
     public LiveData<List<DataList>> getAllVideos() {
         return videoRepository.getTemporaryList();
     }
+
+    public LiveData<String> getAllAPICalls(int pos) {
+        return videoRepository.getMutableLiveData(pos);
+    }
 }
 

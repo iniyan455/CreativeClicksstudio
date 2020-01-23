@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.iniyan.videoview.R;
 import com.iniyan.videoview.databinding.VideoListItemBinding;
 import com.iniyan.videoview.model.DataList;
